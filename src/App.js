@@ -10,58 +10,51 @@ import {
 
 function App() {
 
-  // STATE = How to write variable in react
-  const [countries, setCountries] = useState([
-    'USA', 'UK', 'INDIA'
-  ]);
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState('worldwide');
 
-  // https://disease.sh/v3/covid-19/countries
 
-  // USE EFFECT = Runs a piece of code based on a given condition 
   useEffect(() => {
 
-    
-    // The code inside here run once
-    // when the component loads and not again after   
-    
-    // async -> sends a request , wait for it , and do something with the information
-    
-    const getCountriesData = async () =>{
+    const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
-      .then((response)=>response.json())
-      .then((data)=> {
+        .then((response) => response.json())
+        .then((data) => {
 
-        const countries = data.map((country)=>(
-          {
-            name: country.country, // United States, United Kingdom 
-            value: country.countryInfo.iso2 //UK, USA 
-          }
+          const countries = data.map((country) => (
+            {
+              name: country.country,
+              value: country.countryInfo.iso2
+            }
           ));
           setCountries(countries);
         })
-      }
+    }
 
-      getCountriesData();
-    }, [])
-    
+    getCountriesData();
+  }, [])
+
+  const onCountryChange = (event) => {
+    const countryCode = event.target.value;
+
+    console.log(countryCode);
+    setCountry(countryCode);
+  }
 
   return (
     <div className="app">
       <div className="app__header">
         <h1>COVID 19 Tracker</h1>
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value="abc">
-            {/* Loop through all the countries and show a drop down list of the options */}
+          <Select variant="outlined" value={country} onChange={onCountryChange}>
 
+            <MenuItem value="worldwide">Worldwide</MenuItem>
             {
               countries.map(country => (
                 <MenuItem value={country.value}>{country.name}</MenuItem>
               ))
             }
 
-            {/* <MenuItem value="worldwide">Worldwide</MenuItem>
-            <MenuItem value="worldwide">Worldwide</MenuItem>
-            <MenuItem value="worldwide">Worldwide</MenuItem> */}
           </Select>
         </FormControl>
       </div>
