@@ -3,10 +3,9 @@ import React, { useState, useEffect } from 'react';
 import {
   MenuItem,
   FormControl,
-  Select,
-  Card,
-  CardContent
+  Select
 } from "@mui/material"
+import InfoBox from './InfoBox';
 
 function App() {
 
@@ -42,6 +41,10 @@ function App() {
   }
 
   return (
+
+    /* Header */
+    /* Title + Select input dropdown field */
+
     <div className="app">
       <div className="app__header">
         <h1>COVID 19 Tracker</h1>
@@ -59,12 +62,12 @@ function App() {
         </FormControl>
       </div>
 
-      {/* Header */}
-      {/* Title + Select input dropdown field */}
+      <div className="app__stats">
+        <InfoBox title="Coronavirus Cases" cases={123} total={2000} />
+        <InfoBox title="Revovered" cases={723} total={3000} />
+        <InfoBox title="Deaths" cases={23} total={4000} />
+      </div>
 
-      {/* Info Boxes */}
-      {/* Info Boxes */}
-      {/* Info Boxes */}
 
       {/* Table */}
 
