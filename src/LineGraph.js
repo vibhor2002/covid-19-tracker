@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Line } from "react-chartjs-2"
-import numeral from " numeral";
+import numeral from "numeral";
 
 const options = {
     legend: {
@@ -60,7 +60,7 @@ function LineGraph() {
         <div>
             <h1>Graph</h1>
             <Line
-                options={}
+                // options={ }
                 data={{
                     datasets: [
                         {
