@@ -1,3 +1,7 @@
+// WEBSITE DEPLOYED
+// Project Console: https://console.firebase.google.com/project/covid-19-tracker-b33b6/overview
+// Hosting URL: https://covid-19-tracker-b33b6.web.app
+
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import {
